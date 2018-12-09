@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>Choose your specialty</h1>
+</div>
+
+<div class="container">
+  <form action = 'posts/' method="post">
+    {% csrf_token %}
+    <h6> (You can pick only one specialty) </h6>
+    <br>
+    {% for branch in object_list  %}
+      <h5> <input type="radio" name="branch" value="{{ branch.name }}"> {{ branch.name }} </h5>
+      <br>
+
+    {% endfor %}
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+
+</div>
+
+{% endblock %}
